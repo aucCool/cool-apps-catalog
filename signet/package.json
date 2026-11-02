@@ -1,0 +1,23 @@
+{
+  "name": "signet",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "copy-pdfjs": "bun scripts/copy-pdfjs.mjs",
+    "dev": "bun run copy-pdfjs && echo y | bun x wrangler d1 migrations apply signet --local && bun x wrangler dev",
+    "test": "bun test",
+    "typecheck": "tsc --noEmit",
+    "check": "bun run typecheck && bun test",
+    "deploy": "bun run copy-pdfjs && bun x wrangler deploy"
+  },
+  "dependencies": {
+    "pdf-lib": "1.17.1"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "5.20261102.1",
+    "pdfjs-dist": "5.4.296",
+    "typescript": "5.9.3",
+    "wrangler": "4.50.0"
+  }
+}

@@ -1,0 +1,427 @@
+:root {
+  --ink: #1e1a16;
+  --muted: #6d645b;
+  --paper: #f3efe7;
+  --card: #fffdf9;
+  --line: #e3dbd0;
+  --seal: #8f2d2a;
+  --ok: #1f6b45;
+  --warn: #8a5a12;
+  --bad: #8f2d2a;
+  color: var(--ink);
+  font-family: "Segoe UI", system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.45;
+  background: var(--paper);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+h1,
+h2,
+legend {
+  font-family: Palatino, "Iowan Old Style", Georgia, serif;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 0 0 0.25rem;
+}
+h2 {
+  font-size: 1.15rem;
+  margin: 0;
+}
+
+a {
+  color: var(--seal);
+}
+
+.bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 24px;
+  border-bottom: 1px solid var(--line);
+  background: var(--card);
+}
+
+.brand {
+  font-family: Palatino, Georgia, serif;
+  font-size: 1.25rem;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.bar nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.bar nav a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+main {
+  padding: 28px 20px 64px;
+}
+
+.wide {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+.narrow {
+  max-width: 420px;
+  margin: 8vh auto;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 16px;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+.split {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  align-items: end;
+  margin-bottom: 20px;
+}
+
+.lede {
+  color: var(--muted);
+  margin-top: 0;
+  max-width: 42rem;
+}
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin: 0;
+}
+.meta {
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+.empty {
+  color: var(--muted);
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.92rem;
+}
+label.check {
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+
+button,
+.button {
+  font: inherit;
+  color: var(--ink);
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px 12px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+button.primary,
+.button.primary {
+  background: var(--seal);
+  border-color: var(--seal);
+  color: white;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--seal);
+  outline-offset: 2px;
+}
+
+.banner {
+  margin: 0 0 16px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: #efe7d6;
+}
+.banner.good {
+  background: #e5f2ea;
+  color: var(--ok);
+}
+.banner.bad {
+  background: #f8e8e6;
+  color: var(--bad);
+}
+
+.cards {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 12px;
+}
+.link-card a {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: inherit;
+  text-decoration: none;
+}
+.pill {
+  align-self: flex-start;
+  border-radius: 999px;
+  padding: 2px 8px;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  background: #efe7d6;
+}
+.pill.sent {
+  background: #e7eef8;
+  color: #1f4e79;
+}
+.pill.completed,
+.pill.signed {
+  background: #e5f2ea;
+  color: var(--ok);
+}
+.pill.void {
+  background: #f8e8e6;
+  color: var(--bad);
+}
+.pill.pending,
+.pill.draft {
+  background: #efe7d6;
+  color: var(--warn);
+}
+
+.doc-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: start;
+  margin-bottom: 16px;
+}
+.doc-layout {
+  display: grid;
+  grid-template-columns: 320px minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+.doc-layout aside {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: sticky;
+  top: 12px;
+}
+
+fieldset {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  margin: 0;
+}
+
+.signers,
+.links,
+.audit {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.signer {
+  display: grid;
+  grid-template-columns: 14px 1fr auto;
+  gap: 8px;
+  align-items: center;
+}
+.signer .meta,
+.links code {
+  display: block;
+}
+.swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 99px;
+}
+.signer-0 {
+  background: #8f2d2a;
+}
+.signer-1 {
+  background: #1f4e79;
+}
+.signer-2 {
+  background: #1f6b45;
+}
+.signer-3 {
+  background: #8a5a12;
+}
+.signer-4 {
+  background: #5c3d7a;
+}
+.signer-5 {
+  background: #0f6e6e;
+}
+
+.links code {
+  word-break: break-all;
+  font-size: 0.8rem;
+}
+
+.stage {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.page {
+  position: relative;
+  margin: 0 auto;
+  background: white;
+  box-shadow: 0 8px 28px rgba(40, 30, 20, 0.08);
+}
+.page canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.overlay {
+  position: absolute;
+  inset: 0;
+}
+
+.field {
+  position: absolute;
+  border: 1.5px solid var(--c, var(--seal));
+  background: color-mix(in srgb, var(--c, var(--seal)) 14%, white);
+  border-radius: 4px;
+  color: var(--ink);
+  font-size: 12px;
+  overflow: hidden;
+}
+.field.selected {
+  box-shadow: 0 0 0 2px var(--c, var(--seal));
+}
+.field-name {
+  display: block;
+  padding: 2px 4px;
+  pointer-events: none;
+}
+.resize {
+  position: absolute;
+  right: -1px;
+  bottom: -1px;
+  width: 12px;
+  height: 12px;
+  padding: 0;
+  border-radius: 2px;
+  background: var(--c, var(--seal));
+  border: 0;
+  cursor: nwse-resize;
+}
+
+.field input,
+.field button.sign-hit {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: transparent;
+  padding: 2px 4px;
+  font: inherit;
+}
+.field button.sign-hit {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.field button.sign-hit img {
+  max-width: 70%;
+  max-height: 80%;
+  object-fit: contain;
+}
+
+dialog {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 16px;
+  width: min(680px, calc(100vw - 32px));
+  background: var(--card);
+  color: inherit;
+}
+dialog canvas {
+  width: 100%;
+  height: auto;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  touch-action: none;
+}
+dialog::backdrop {
+  background: rgba(30, 26, 22, 0.35);
+}
+
+.sign-actions {
+  margin-top: 16px;
+}
+
+@media (max-width: 900px) {
+  .split,
+  .doc-head,
+  .doc-layout {
+    display: flex;
+    flex-direction: column;
+  }
+  .doc-layout aside {
+    position: static;
+  }
+}
