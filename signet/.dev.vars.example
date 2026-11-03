@@ -1,0 +1,6 @@
+ADMIN_PASSWORD=replace-with-a-long-password
+# Optional. When both are set, Send emails each signer a link.
+# RESEND_API_KEY=
+# MAIL_FROM=Signet <sign@example.com>
+# SENDER_NAME=Northwind
+# APP_BASE_URL=https://sign.example.com

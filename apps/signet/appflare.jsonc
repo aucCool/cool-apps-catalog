@@ -1,0 +1,70 @@
+{
+  // Signet's source is the signet/ directory of this catalog repository.
+  // The pin is the commit that contains that directory; this manifest is
+  // read from the catalog checkout, not from the pinned tree.
+  "$schema": "https://appflare.github.io/catalog/schema/v1.json",
+  "slug": "signet",
+  "name": "Signet",
+  "summary": "Signet collects signatures on PDFs you upload. Place signature, initials, text, date, and checkbox fields, send each person a link, and download a stamped PDF with a certificate page.",
+  "tagline": "Collect signatures on PDFs you upload",
+  "features": [
+    "Upload a PDF and place signature fields on the page",
+    "Send each person their own link to sign",
+    "Stamp signatures onto the PDF when everyone has signed",
+    "Add a certificate page that records who signed and when"
+  ],
+  "alternativeTo": ["DocuSeal"],
+  "repo": "aucCool/cool-apps-catalog",
+  "license": "Apache-2.0",
+  "categories": ["business", "productivity"],
+  "authors": [{ "name": "aucCool", "url": "https://auccool.com", "github": "aucCool" }],
+  "maintainers": ["Miciurash"],
+  "source": {
+    "ref": "cursor/signet-document-signing-a5c4",
+    "sha": "b8b698fda7d29272771b6fc6a4c58efb6c79e3de",
+    "version": "0.1.0"
+  },
+  "install": {
+    "packageManager": "bun",
+    "wranglerConfig": "signet/wrangler.jsonc",
+    // The Worker, its lockfile, and PDF.js live in signet/, not at the
+    // catalog root. The config's build command copies PDF.js into public/.
+    "installDirs": [{ "path": "signet" }]
+  },
+  // Workers, D1, and R2 fit the free plan. R2 has to be enabled on the account.
+  "plan": "free",
+  "requires": ["r2"],
+  // Signing links stay reachable when the admin turns on Cloudflare Access.
+  // The dashboard at / stays behind Access.
+  "access": {
+    "bypass": ["/s/*", "/pdfjs/*", "/app.css", "/sign.js", "/favicon.svg"]
+  },
+  "secrets": [
+    {
+      "name": "ADMIN_PASSWORD",
+      "label": "Admin password",
+      "help": "Signs you in to the document dashboard. Use at least 8 characters.",
+      "generate": "password"
+    },
+    {
+      "name": "RESEND_API_KEY",
+      "label": "Resend API key",
+      "help": "Sends signing links by email when a from address is set too. Leave it empty to copy each link yourself.",
+      "optional": true,
+      "link": { "label": "Create an API key", "url": "https://resend.com/api-keys" }
+    },
+    {
+      "name": "MAIL_FROM",
+      "label": "From address",
+      "help": "The address Resend accepts, such as Signet <sign@example.com>. Email stays off until this and the API key are both set.",
+      "optional": true
+    }
+  ],
+  "postInstall": [
+    {
+      "type": "markdown",
+      "content": "Open {{appUrl}} and sign in with the admin password. Upload a PDF, add a signer, click the page to place a signature field, choose Save fields, then Create signing links. Copy a link and open it to sign. Email is sent only when a Resend API key and a from address are set."
+    }
+  ],
+  "bump": { "autoMerge": false }
+}
