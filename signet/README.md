@@ -50,4 +50,4 @@ Templates you reuse, bulk send, embedded signing, webhooks, and a public API. Th
 
 ## Catalog
 
-This folder is the app. It is not a catalog entry. `apps/` in this repository only holds manifests that point at an upstream GitHub repository, and a new listing needs that repository to have at least 50 stars (unless a maintainer applies `skip-min-stars`). Publish Signet as its own public repository, pin the commit from `apps/signet/appflare.jsonc`, and use Bun as `install.packageManager`.
+The catalog listing is `apps/signet/appflare.jsonc`. It builds this folder from the pinned commit of this repository. After that release is published, an Appflare manager lists Signet on its Catalog page. Install it there, open the app, and sign in with the admin password from the install form.

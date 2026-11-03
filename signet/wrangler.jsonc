@@ -3,6 +3,11 @@
   "name": "signet",
   "main": "src/index.ts",
   "compatibility_date": "2025-11-18",
+  // PDF.js is served from public/pdfjs and is not committed. Wrangler runs
+  // this in this directory before it bundles, including a catalog install.
+  "build": {
+    "command": "bun run copy-pdfjs"
+  },
   "assets": {
     "directory": "./public",
     "binding": "ASSETS"
